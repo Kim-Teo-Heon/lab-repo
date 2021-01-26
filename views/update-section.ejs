@@ -1,0 +1,21 @@
+<% for(let i=0; i<data.length; i++){ %>
+    <article class="contents_wrapper">
+        <img src="./images/<%= data[i].img %>">
+        <div class="info_wrapper">
+            <%=data[i].text %>
+        </div>
+    </article>
+    <form action="/delete/<%=data[i].id%>" method="POST">
+        <button>Delete</button>
+        </form>
+<% } %>
+
+<% for(var i=0; i<data.length; i++){ %>
+    <% if(data[i].id==page_id){ %>
+        <form enctype="multipart/form-data" action="/update/<%=data[i].id %>" method="POST">
+            <input type="file" name="img" > 
+            <textarea name="text"><%=data[i].text %></textarea>
+            <button type="submit">Update</button>
+        </form>
+        <% }%>
+<% } %>

@@ -21,10 +21,9 @@ const index_route = require('./routes/index');
 app.use('/',index_route);
 app.use('/members',members_route);
 
-
 // app.get('/',(req,res) =>{
 //     read.read_data(req, res);
-// }); 
+// });
 
 // app.post('/create',upload.single('img'),(req, res)=>{
 //     create.create_data(req, res);

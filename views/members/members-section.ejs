@@ -1,0 +1,19 @@
+<h1>구성원 소개</h1>
+
+<% for(let i=0; i<members.length; i++ ){ %>
+<% if(i%2==0){ %>
+    <article class="contents_wrapper">
+        <img src="./images/<%= members[i].img %>">
+        <div class="info_wrapper">
+            <div>이름 : <%=members[i].name %></div>
+        </div>
+    </article>
+<% } else{ %>
+    <article class="contents_wrapper">
+        <div class="info_wrapper">
+            <div>이름 : <%=members[i].name %></div>
+        </div>
+        <img src="./images/<%= members[i].img %>">
+    </article>
+<% } %>
+<% } %>

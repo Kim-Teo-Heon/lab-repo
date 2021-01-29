@@ -15,15 +15,39 @@ app.use('/members',express.static(path.join(__dirname,'uploads')));
 app.use('/members/update',express.static(path.join(__dirname,'public')));
 app.use('/members/update',express.static(path.join(__dirname,'uploads')));
 
+app.use('/dksekgns-admin',express.static(path.join(__dirname,'public')));
+app.use('/dksekgns-admin',express.static(path.join(__dirname,'uploads')));
+
+
 const members_route = require('./routes/members');
 const index_route = require('./routes/index');
 
 app.use('/',index_route);
 app.use('/members',members_route);
 
+app.get('/admin', (req,res)=>{
+    res.render('admin');
+})
+
+const login = require('./controllers/login');
+const read = require('./controllers/read');
+
+app.post('/admin', (req, res)=>{
+    login.read_admin(req, res);
+})
+
+
+
+app.get('/dksekgns-admin', (req, res)=>{
+    read.read_admin_data(req,res);
+})
+
+app.get('/dksekgns-admin/members', (req, res)=>{
+    read.read_admin_members(req,res);
+})
 // app.get('/',(req,res) =>{
 //     read.read_data(req, res);
-// });
+// }); 
 
 // app.post('/create',upload.single('img'),(req, res)=>{
 //     create.create_data(req, res);

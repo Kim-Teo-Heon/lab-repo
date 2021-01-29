@@ -1,0 +1,38 @@
+<h1>구성원 소개</h1>
+
+<% for(let i=0; i<members.length; i++ ){ %>
+<% if(i%2==0){ %>
+    <article class="contents_wrapper">
+        <img src="./images/<%= members[i].img %>">
+        <div class="info_wrapper">
+            <div>이름 : <%=members[i].name %></div>
+        </div>
+    </article>
+    <form action="/memebers/delete/<%=members[i].id%>" method="POST">
+        <button>Delete</button>
+    </form>
+    <button onclick = "location.href = '/members/update/<%=members[i].id%>'">Update</button>
+<% } else{ %>
+    <article class="contents_wrapper">
+        <div class="info_wrapper">
+            <div>이름 : <%=members[i].name %></div>
+        </div>
+        <img src="./images/<%= members[i].img %>">
+    </article>
+    <form action="/memebers/delete/<%=members[i].id%>" method="POST">
+        <button>Delete</button>
+    </form>
+    <button onclick = "location.href = '/members/update/<%=members[i].id%>'">Update</button>
+    
+<% } %>
+<% } %>
+
+
+<% for(let i=0; i<members.length; i++){ %>
+    <% if(members[i].id==page_id){ %>
+    <form enctype="multipart/form-data" action="/members/update/<%=members[i].id%>" method="POST">
+        <input type="file" name="img">  
+        <input type="text" name="name" value="<%=members[i].name%>">
+    <button type="submit">Update</button>
+    <% }%>
+<% } %>

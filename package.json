@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/Kim-Teo-Heon/lab-repo#readme",
   "dependencies": {
+    "aws-sdk": "^2.834.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "multer": "^1.4.2"
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0"
   }
 }

@@ -2,17 +2,19 @@
 
 <% for(let i=0; i<data.length; i++){ %>
     <article class="contents_wrapper">
-        <img src="./images/<%= data[i].img %>">
+        <img src="<%= data[i].img %>">
         <div class="info_wrapper">
             <%=data[i].text %>
         </div>
     </article>
-    <form action="/delete/<%=data[i].id%>" method="POST">
+    <form action="/dksekgns-admin/delete/<%=data[i].id%>" method="POST">
+        <input type="hidden" name="filename" value="<%=data[i].filename %>">
         <button>Delete</button>
     </form>
-    <button onclick = "location.href = '/update/<%=data[i].id%>'">Update</button> 
+    <button onclick = "location.href = '/dksekgns-admin/update/<%=data[i].id%>'">Update</button> 
 <% } %>
-<form enctype="multipart/form-data" action="/create" method="POST">
+<form enctype="multipart/form-data" action="/dksekgns-admin/create" method="POST">
     <input type="file" name="img">  
     <textarea name="text"></textarea>
     <button type="submit">Create</button>
+</form>

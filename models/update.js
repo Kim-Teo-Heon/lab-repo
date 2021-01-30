@@ -1,12 +1,13 @@
 var db=require('../db');
 
 exports.update_data = function(req){
-    let sql = 'UPDATE lab_intro SET img=?, text=? WHERE id=?';
-    let img= req.file.filename;
+    let sql = 'UPDATE lab_intro SET img=?, text=?, filename=? WHERE id=?';
+    let img= req.file.location;
     let text= req.body.text;
     let id = req.params.page_id;
+    let filename = req.file.originalname;
 
-    db.query(sql, [img,text,id],function (err, data) {
+    db.query(sql, [img,text,filename,id],function (err, data) {
     if(err) {
       throw err;
     }

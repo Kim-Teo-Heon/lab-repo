@@ -13,3 +13,15 @@ exports.udpate_members= function(req,res){
         console.log("updated members");
       })
 }
+
+exports.update_research= function(req,res){
+  update_model.update_research(req,function(){
+      console.log("updated research");
+    })
+}
+
+exports.update_publications= function(req,res){
+  update_model.update_publications(req,function(){
+      console.log("updated publications");
+    })
+}

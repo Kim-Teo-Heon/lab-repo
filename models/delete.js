@@ -27,3 +27,26 @@ exports.delete_members = function(req){
   });
 }
 
+exports.delete_research = function(req){
+  let sql = 'DELETE FROM research WHERE id=?';
+  let id = req.params.page_id;
+  
+  db.query(sql, [id],function (err, data) {
+  if(err) {
+    throw err;
+  }
+  });
+}
+
+exports.delete_publications = function(req){
+  let sql = 'DELETE FROM publications WHERE id=?';
+  let id = req.params.page_id;
+  
+  db.query(sql, [id],function (err, data) {
+  if(err) {
+    throw err;
+  }
+  });
+}
+
+

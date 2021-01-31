@@ -7,32 +7,39 @@ const app = express();
 app.set('view engine','ejs');
 app.use(body_parser.urlencoded({extended : false}));
 app.use(express.static(path.join(__dirname,'public')));
-app.use(express.static(path.join(__dirname,'uploads')));
 app.use('/update',express.static(path.join(__dirname,'public')));
-app.use('/update',express.static(path.join(__dirname,'uploads')));
 app.use('/members',express.static(path.join(__dirname,'public')));
-app.use('/members',express.static(path.join(__dirname,'uploads')));
 app.use('/members/update',express.static(path.join(__dirname,'public')));
-app.use('/members/update',express.static(path.join(__dirname,'uploads')));
 
 app.use('/dksekgns-admin',express.static(path.join(__dirname,'public')));
-app.use('/dksekgns-admin',express.static(path.join(__dirname,'uploads')));
 app.use('/dksekgns-admin/update',express.static(path.join(__dirname,'public')));
-app.use('/dksekgns-admin/update',express.static(path.join(__dirname,'uploads')));
+app.use('/dksekgns-admin/members/update',express.static(path.join(__dirname,'public')));
+app.use('/dksekgns-admin/research/update',express.static(path.join(__dirname,'public')));
+app.use('/dksekgns-admin/publications/update',express.static(path.join(__dirname,'public')));
 
+const login = require('./controllers/login');
 
-const members_route = require('./routes/members');
+const members_route = require('./routes/admin-members');
 const index_route = require('./routes/index');
 const admin_router = require('./routes/admin');
+const reserch_router = require('./routes/admin-research');
+const publications_router = require('./routes/admin-pulications');
 
 app.use('/',index_route);
-app.use('/members',members_route);
+app.use('/dksekgns-admin', admin_router);
+app.use('/dksekgns-admin/members',members_route);
+app.use('/dksekgns-admin/research', reserch_router);
+app.use('/dksekgns-admin/publications', publications_router);
 
 app.get('/admin', (req,res)=>{
     res.render('admin');
 })
 
-const login = require('./controllers/login');
+app.post('/admin' ,(req, res)=>{
+    login.read_admin(req, res);
+})
+
+
 // const read = require('./controllers/read');
 // const create = require('./controllers/create');
 // const delete_ = require('./controllers/delete');
@@ -55,10 +62,6 @@ const login = require('./controllers/login');
 //     })
 // })
 
-
-app.post('/admin' ,(req, res)=>{
-    login.read_admin(req, res);
-})
 
 // app.get('/dksekgns-admin',upload.single('img'), (req, res)=>{
 //     read.read_admin_data(req,res);
@@ -96,57 +99,9 @@ app.post('/admin' ,(req, res)=>{
 //     res.redirect('/dksekgns-admin');
 // })
 
-app.use('/dksekgns-admin', admin_router);
 
 // app.get('/dksekgns-admin/members',upload.single('img'), (req, res)=>{
 //     read.read_admin_members(req,res);
-// })
-
-
-// app.get('/',(req,res) =>{
-//     read.read_data(req, res);
-// }); 
-
-// app.post('/create',upload.single('img'),(req, res)=>{
-//     create.create_data(req, res);
-//     res.redirect('/');
-// })
-
-// app.post('/delete/:page_id',(req, res)=>{
-//     delete_.delete_data(req, res)
-//     res.redirect('/');
-// })
-
-// app.get('/update/:page_id',(req, res)=>{
-//     read.read_data(req,res);
-// })
-
-// app.post('/update/:page_id',upload.single('img'),(req, res)=>{
-//     update.update_data(req,res);
-//     res.redirect('/');
-// })
-
-// app.get('/members',(req, res)=>{
-//     read.read_members(req, res);
-// })
-
-// app.post('/members/create', upload.single('img'),(req,res)=>{
-//     create.create_members(req, res);
-//     res.redirect('/members');
-// })
-
-// app.get('/members/update/:page_id',(req, res)=>{
-//     read.read_members(req, res);    
-// })
-
-// app.post('/members/update/:page_id', upload.single('img'),(req,res)=>{
-//     update.udpate_members(req,res);
-//     res.redirect('/members');
-// })
-
-// app.post('/members/delete/:page_id',(req, res)=>{
-//     delete_.delete_members(req,res);
-//     res.redirect('/members');
 // })
 
 module.exports = app;

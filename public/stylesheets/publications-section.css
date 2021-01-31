@@ -1,0 +1,38 @@
+section{
+    padding-top: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contents_wrapper{
+    border: solid black 2px;
+    border-radius: 10px;
+    background-color: rgb(224, 224, 224);
+    width: 900px;
+    overflow: hidden;
+    margin: 25px 0px;
+    display: flex;
+    flex-direction : column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.years{
+    width: 800px;
+    color: black;
+    border-bottom: solid 1px black;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.publications{
+    width: 800px;
+    margin-top: 10px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: flex-start;
+}

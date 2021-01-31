@@ -20,14 +20,19 @@ exports.read_members = function(callback){
     })
 }
 
-exports.read_admin = function(req, res, callback){
-    let sql='SELECT * FROM admin WHERE id=? AND password=?';
+exports.read_research = function(callback){
+    let sql='SELECT * FROM research';
+    db.query(sql,(err, data)=>{
+        if(err) {
+            throw err;
+        }
+        return callback(data);
+    })
+}
 
-    let id = req.body.id;
-    let password = req.body.password;
-    console.log('id : '+id, 'pw :'+ password)
-
-    db.query(sql,[id,password],(err, data)=>{
+exports.read_publications = function(callback){
+    let sql='SELECT * FROM publications';
+    db.query(sql,(err, data)=>{
         if(err) {
             throw err;
         }

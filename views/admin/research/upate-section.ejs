@@ -1,0 +1,41 @@
+<h1>연구 과제</h1>
+
+<% for(let i=0; i<research.length; i++ ){ %>
+<% if(i%2==0){ %>
+    <article class="contents_wrapper">
+        <img src="<%= research[i].img %>">
+        <div class="info_wrapper">
+            <div><%=research[i].text %></div>
+        </div>
+    </article>
+    <form action="/dksekgns-admin/research/delete/<%=research[i].id%>" method="POST">
+        <input type="hidden" name="filename" value="<%=research[i].filename %>">
+        <button>Delete</button>
+    </form>
+    <button onclick = "location.href = '/dksekgns-admin/research/update/<%=research[i].id%>'">Update</button>
+<% } else{ %>
+    <article class="contents_wrapper">
+        <div class="info_wrapper">
+            <div><%=research[i].text %></div>
+        </div>
+        <img src="<%= research[i].img %>">
+    </article>
+    <form action="/dksekgns-admin/research/delete/<%=research[i].id%>" method="POST">
+        <input type="hidden" name="filename" value="<%=research[i].filename %>">
+        <button>Delete</button>
+    </form>
+    <button onclick = "location.href = '/dksekgns-admin/research/update/<%=research[i].id%>'">Update</button>
+    
+<% } %>
+<% } %>
+
+
+<% for(let i=0; i<research.length; i++){ %>
+    <% if(research[i].id==page_id){ %>
+    <form enctype="multipart/form-data" action="/dksekgns-admin/research/update/<%=research[i].id%>" method="POST">
+        <input type="file" name="img">  
+        <textarea name="text"><%=research[i].name%></textarea>
+    <button type="submit">Update</button>
+    </form>
+    <% }%>
+<% } %>

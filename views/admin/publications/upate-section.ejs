@@ -1,0 +1,31 @@
+<h1>publications</h1>
+
+<% for(let y=2017; y<2021; y++) {%>
+    <div class="contents_wrapper">
+        <div class="years">
+            <%- y %>
+        </div>
+    <% for(let i=0; i<publications.length; i++ ){ %>
+        <% if(publications[i].year == y){ %>
+            <article class="publications">
+                    <%=publications[i].publications %>
+                    <form action="/dksekgns-admin/publications/delete/<%=publications[i].id%>" method="POST">
+                        <input type="hidden" name="filename" value="<%=publications[i].filename %>">
+                        <button>Delete</button>
+                    </form>
+                    <button onclick = "location.href = '/dksekgns-admin/publications/update/<%=publications[i].id%>'">Update</button>
+            </article>
+        <% } %>
+    <% } %>
+    </div>
+    <% } %>
+
+<% for(let i=0; i<publications.length; i++){ %>
+    <% if(publications[i].id==page_id){ %>
+    <form action="/dksekgns-admin/publications/update/<%=publications[i].id%>" method="POST">
+        <input type="number" name="year" value="<%=publications[i].year%>">
+        <textarea name="publications"><%=publications[i].publications%></textarea>
+        <button type="submit">Update</button>
+    </form>
+    <% }%>
+<% } %>

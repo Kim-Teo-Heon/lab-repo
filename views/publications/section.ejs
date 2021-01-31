@@ -1,0 +1,16 @@
+<h1>Publications</h1>
+
+<% for(let y=2017; y<2021; y++) {%>
+<div class="contents_wrapper">
+    <div class="years">
+        <%- y %>
+    </div>
+<% for(let i=0; i<publications.length; i++ ){ %>
+    <% if(publications[i].year == y){ %>
+        <article class="publications">
+            <%=publications[i].publications %>
+        </article>
+    <% } %>
+<% } %>
+</div>
+<% } %>

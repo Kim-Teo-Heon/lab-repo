@@ -12,3 +12,16 @@ exports.delete_members = function(req,res){
     console.log("delete members");
   });
 }//데이터 전송이 끝나면 실행
+
+exports.delete_research = function(req,res){
+  delete_model.delete_research(req,function(){
+    console.log("delete members");
+  });
+}//데이터 전송이 끝나면 실행
+
+exports.delete_publications = function(req,res){
+  delete_model.delete_publications(req,function(){
+    console.log("delete publications");
+  });
+}//데이터 전송이 끝나면 실행
+

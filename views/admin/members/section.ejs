@@ -1,0 +1,34 @@
+<h1>구성원 소개</h1>
+
+<% for(let i=0; i<members.length; i++ ){ %>
+<% if(i%2==0){ %>
+    <article class="contents_wrapper">
+        <img src="<%= members[i].img %>">
+        <div class="info_wrapper">
+            <div>이름 : <%=members[i].name %></div>
+        </div>
+    </article>
+    <form action="/dksekgns-admin/members/delete/<%=members[i].id%>" method="POST">
+        <input type="hidden" name="filename" value="<%=members[i].filename %>">
+        <button>Delete</button>
+    </form>
+    <button onclick = "location.href = '/dksekgns-admin/members/update/<%=members[i].id%>'">Update</button>
+<% } else{ %>
+    <article class="contents_wrapper">
+        <div class="info_wrapper">
+            <div>이름 : <%=members[i].name %></div>
+        </div>
+        <img src="<%= members[i].img %>">
+    </article>
+    <form action="/dksekgns-admin/members/delete/<%=members[i].id%>" method="POST">
+        <input type="hidden" name="filename" value="<%=members[i].filename %>">
+        <button>Delete</button>
+    </form>
+    <button onclick = "location.href = '/dksekgns-admin/members/update/<%=members[i].id%>'">Update</button>
+    
+<% } %>
+<% } %>
+<form enctype="multipart/form-data" action="/dksekgns-admin/members/create" method="POST">
+    <input type="file" name="img">  
+    <input type="text" name="name">
+    <button type="submit">Create</button>

@@ -8,6 +8,7 @@ section{
 
 .contents_wrapper{
     border: solid black 1px;
+    color: black;
     height: 400px;
     width: 900px;
     overflow: hidden;

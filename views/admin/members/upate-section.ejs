@@ -32,6 +32,7 @@
 
 <% for(let i=0; i<members.length; i++){ %>
     <% if(members[i].id==page_id){ %>
+    <h2>Update</h2>
     <form enctype="multipart/form-data" action="/dksekgns-admin/members/update/<%=members[i].id%>" method="POST">
         <input type="file" name="img">  
         <input type="text" name="name" value="<%=members[i].name%>">

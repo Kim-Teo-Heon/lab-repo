@@ -26,6 +26,7 @@ exports.read_publications = (req, res)=>{
 
 
 exports.read_admin_data= (req, res)=>{
+
     read_model.read_data((data)=>{
         if(req.params.page_id){
             res.render('./admin/index/update',{data : data, page_id : req.params.page_id});

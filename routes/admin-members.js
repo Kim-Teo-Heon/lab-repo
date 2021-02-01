@@ -8,6 +8,7 @@ const read = require('../controllers/read');
 const create = require('../controllers/create');
 const delete_ = require('../controllers/delete');
 const update = require('../controllers/update');
+const alert = require('../public/javascripts/alert');
 
 aws.config.loadFromPath(__dirname + '/../config/s3.json');
 s3 = new aws.S3();
@@ -27,8 +28,16 @@ router.get('/',(req, res)=>{
 })
 
 router.post('/create', upload.single('img'),(req,res)=>{
-    create.create_members(req, res);
-    res.redirect('/dksekgns-admin/members');
+    
+    if(req.file == undefined){
+        res.send(alert.img_err());
+    } else if(req.body.name == ''){
+        res.send(alert.text_err);
+    }
+    else{
+        create.create_members(req, res);
+        res.redirect('/dksekgns-admin/members');
+    }
 })
 
 router.get('/update/:page_id',(req, res)=>{

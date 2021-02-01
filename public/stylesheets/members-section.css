@@ -7,7 +7,6 @@ section{
 }
 
 .contents_wrapper{
-    border: solid black 1px;
     height: 400px;
     width: 900px;
     overflow: hidden;
@@ -25,10 +24,10 @@ section{
 .info_wrapper{
     width: 500px;
     height: 350px;
-    border: black solid 1px;
 }
 
 .info_wrapper > div{
     color: black;
     font-size: 20px;
+    font-weight: bold;
 }

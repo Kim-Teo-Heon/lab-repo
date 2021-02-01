@@ -13,6 +13,7 @@
 
 <% for(var i=0; i<data.length; i++){ %>
     <% if(data[i].id==page_id){ %>
+        <h2>update</h2>
         <form enctype="multipart/form-data" action="/dksekgns-admin/update/<%=data[i].id %>" method="POST">
             <input type="hidden" name="filename" value="<%=data[i].filename %>">
             <input type="file" name="img">

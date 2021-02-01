@@ -32,6 +32,7 @@
 
 <% for(let i=0; i<research.length; i++){ %>
     <% if(research[i].id==page_id){ %>
+    <h2>Update</h2>
     <form enctype="multipart/form-data" action="/dksekgns-admin/research/update/<%=research[i].id%>" method="POST">
         <input type="file" name="img">  
         <textarea name="text"><%=research[i].name%></textarea>

@@ -49,6 +49,8 @@ exports.create_publications= function(req){
   let year= post.year;
   let publications = post.publications;
 
+  console.log(year)
+
   db.query(sql, [year, publications],function (err, data) {
   if(err) {
     throw err;

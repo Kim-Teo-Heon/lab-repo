@@ -22,6 +22,7 @@
 
 <% for(let i=0; i<publications.length; i++){ %>
     <% if(publications[i].id==page_id){ %>
+    <h2>Update</h2>
     <form action="/dksekgns-admin/publications/update/<%=publications[i].id%>" method="POST">
         <input type="number" name="year" value="<%=publications[i].year%>">
         <textarea name="publications"><%=publications[i].publications%></textarea>

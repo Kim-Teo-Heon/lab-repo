@@ -8,6 +8,7 @@ const read = require('../controllers/read');
 const create = require('../controllers/create');
 const delete_ = require('../controllers/delete');
 const update = require('../controllers/update');
+const alert = require('../public/javascripts/alert');
 
 aws.config.loadFromPath(__dirname + '/../config/s3.json');
 s3 = new aws.S3();
@@ -27,8 +28,14 @@ router.get('/',(req, res)=>{
 })
 
 router.post('/create', upload.single('img'),(req,res)=>{
-    create.create_research(req, res);
-    res.redirect('/dksekgns-admin/research');
+    if(req.file == undefined){
+        res.send(alert.img_err());
+    } else if(req.body.text == ''){
+        res.send(alert.text_err());
+    } else{
+        create.create_research(req, res);
+        res.redirect('/dksekgns-admin/research');
+    }
 })
 
 router.get('/update/:page_id',(req, res)=>{
